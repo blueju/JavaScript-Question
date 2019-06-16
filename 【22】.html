@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      下面代码的输出是什么？
+    </h1>
+    <p>
+      使用了use strict，可以确保不会意外地声明全局变量。
+    </p>
+  </body>
+  <script type="text/javascript">
+    function getAge() {
+      'use strict'
+      age = 21;
+      console.log(age);
+    }
+    getAge()
+  </script>
+</html>

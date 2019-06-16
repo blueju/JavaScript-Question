@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let person = {
+        personName: ''
+      }
+      Object.defineProperty(person, 'personName', {
+        enumerable: true,
+        get: function getter() {
+          return this._name
+        },
+        set: function setter(newValue) {
+          this._name = newValue
+        }
+      })
+      person.personName = 'blueju'
+      console.log(person.personName)
+    </script>
+  </body>
+</html>

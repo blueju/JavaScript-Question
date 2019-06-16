@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      下面代码的输出是什么？
+    </h1>
+    <p>
+      你不能像使用常规对象那样向构造函数添加属性。如果要一次向所有对象添加功能，则必须使用原型。
+      <pre>
+        Person.prototype.getFullName=function (){
+          return this.firstName + this.lastName
+        }
+      </pre>
+    </p>
+    <p>
+      这样会使用member.getFullName()是可用的，为什么这样做是对的？假设我们将此方法添加到构造函数本身。也许不是每个Person实例都需要这种方法。这会浪费大量内存空间，因为它们仍具有该属性，这占用了每个实例的内存空间。相反，如果我们只将它添加到原型中，我们只需将它放在内存中的一个位置，但它们都可以访问它。
+    </p>
+    <script type="text/javascript">
+      function Person(firstName, lastName) {
+        this.firstName = firstName,
+          this.lastName = lastName
+      }
+      const member = new Person('A', 'B')
+      Person.getFullName = () => this.firstName + this.lastName
+
+      console.log(member.getFullName());
+    </script>
+  </body>
+</html>

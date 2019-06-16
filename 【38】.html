@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      下面代码的输出是什么?
+    </h1>
+    <pre>
+      (() => {
+        let x, y;
+        try {
+          throw new Error();
+        } catch (x) {
+          (x = 1), (y = 2);
+          console.log(x);
+        }
+        console.log(x);
+        console.log(y);
+      })();
+    </pre>
+    <p>
+      catch块接收参数x。当我们传递参数时，这与变量的x不同。这个变量x是属于catch作用域的。
+    </p>
+    <p>
+      之后，我们将这个块级作用域的变量设置为1，并设置变量y的值。 现在，我们打印块级作用域的变量x，它等于1。
+    </p>
+    <p>
+      在catch块之外，x仍然是undefined，而y是2。 当我们想在catch块之外的console.log(x)时，它返回undefined，而y返回2。
+    </p>
+
+  </body>
+  <script type="text/javascript">
+    (() => {
+      let x, y;
+      try {
+        throw new Error();
+      } catch (x) {
+        (x = 1), (y = 2);
+        console.log(x);
+      }
+      console.log(x);
+      console.log(y);
+    })();
+  </script>
+</html>

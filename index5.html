@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function proxy(target, sourceKey, key) {
+        Object.defineProperty(target, key, {
+          // enumerable和configurable具体代表什么，请自行查阅Object.defineProperty
+          enumerable: true,
+          configurable: true,
+          get: function proxyGetter() {
+            return target[sourceKey][key]
+          },
+          set: function proxySetter(value) {
+            target[sourceKey][key] = value
+          }
+        })
+      }
+
+      let object = {
+        data: {
+          name: 'blueju'
+        }
+      }
+
+      proxy(object, 'data', 'name')
+      console.log('object.name的输出是', object.name)
+      console.log('object.data.name的输出是', object.data.name)
+      console.log('3秒将使用object.name="blueju"修改name值')
+      setTimeout(function() {
+        object.name = 'blueju'
+        console.log('已成功修改，打印object.name输出的值是', object.name)
+      }, 3000)
+    </script>
+  </body>
+</html>

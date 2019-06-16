@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      下面代码的输出是什么？
+      <ul style="list-style-type:upper-latin;">
+        <li>"number"</li>
+        <li>"array"</li>
+        <li>"object"</li>
+        <li>"NaN"</li>
+      </ul>
+    </h1>
+    <p>
+      扩展运算符返回一个带参数的数组。数组是一个对象，因此typeof args返回的是object
+    </p>
+  </body>
+  <script type="text/javascript">
+    function getAge(...args) {
+      console.log(args);
+      console.log(arguments);
+      console.log(args == arguments);
+      console.log(typeof args);
+      console.log(Object.prototype.toString.call(args));
+      console.log(Object.prototype.toString.call(arguments));
+    }
+    getAge(21)
+  </script>
+</html>

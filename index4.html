@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+    <!-- <script src="main.js"></script> -->
+  </head>
+
+  <body>
+    <script>
+      let data = {
+        name: 'lanju'
+      }
+      data.name = 'blue'
+
+      function observe(data) {
+        if (!data || typeof data !== 'object') {
+          return
+        }
+        console.log(Object.keys(data))
+        Object.keys(data).forEach(function(key) {
+          // console.log(key)
+          // observe(key)
+          observe(data[key])
+          Object.defineProperty(data, data[key], {
+            enumerable: true,
+            configurable: false,
+            get(key) {
+              return data[key]
+            },
+            set(newValue) {
+              data[key] = newValue
+            }
+          })
+        })
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      下面代码的输出是什么?
+    </h1>
+    <pre>
+      const numbers = [1, 2, 3];
+      numbers[10] = 11;
+      console.log(numbers);
+    </pre>
+    <p>
+      当你为数组中的元素设置一个超过数组长度的值时，JavaScript会创建一个名为“空插槽”的东西。 这些位置的值实际上是undefined，但你会看到类似的东西：
+
+      [1, 2, 3, 7 x empty, 11]
+
+      这取决于你运行它的位置（每个浏览器有可能不同）。
+    </p>
+  </body>
+  <script type="text/javascript">
+    const numbers = [1, 2, 3];
+    numbers[10] = 11;
+    console.log(numbers);
+  </script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>滚动加载更多</title>
+  <style type="text/css">
+    body,
+    div {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100%;
+      background-color: #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border: 1px solid gold;
+    }
+
+    .load_div {
+      width: 400px;
+      height: 300px;
+      border: 1px solid red;
+    }
+
+    .load_div2 {
+      width: 400px;
+      height: 300px;
+      border: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+  <div class="load_div"></div>
+</body>
+<!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var totalHeight = $(document).height() //整个文档高度
+  var seeHeight = $(window).height() //浏览器可视窗口高度
+  var thisBodyHeight = $(document.body).height() //浏览器当前窗口文档body的高度
+  var totalBodyHeight = $(document.body).outerHeight(true) //浏览器当前窗口文档body的总高度 包括border padding margin
+  var thisWidth = $(window).width() //浏览器当前窗口可视区域宽度
+  var thisDocumentWidth = $(document).width() //浏览器当前窗口文档对象宽度
+  var thisBodyWidth = $(document.body).width() //浏览器当前窗口文档body的宽度
+  var totalBodyWidth = $(document.body).outerWidth(true) //浏览器当前窗口文档body的总宽度 包括border padding margin
+  var scrollTop = $(window).scrollTop() //浏览器可视窗口顶端距离网页顶端的高度（垂直偏移）
+  // console.log(totalHeight,seeHeight,thisBodyHeight,totalBodyHeight,thisWidth,thisDocumentWidth,thisBodyWidth,totalBodyWidth,scrollTop);
+  //添加滚动事件
+  $(window).scroll(function () {
+    scrollTop = $(window).scrollTop()
+    totalHeight = $(document).height()
+    // console.log(scrollTop,seeHeight,totalHeight)
+    if (scrollTop + seeHeight + 50 > totalHeight) {
+      var htmlText =
+        '<div class="load_div2"></div><div class="load_div2"></div><div class="load_div2"></div>'
+      $('body').append(htmlText)
+    }
+  })
+</script>
+
+</html>

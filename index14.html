@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>当我们这样做时会发生什么？</h1>
+    <p>
+      这在JavaScript中是可能的，因为函数也是对象。（原始类型之外的所有东西都是对象）
+    </p>
+    <p>
+      函数是一种特殊类型的对象。你自己编写的代码并不是实际的函数。该函数是具有属性的对象，此属性是可调用的。
+    </p>
+    <script type="text/javascript">
+      function bark() {
+        console.log('woof');
+      }
+      bark.animal = 'dog'
+    </script>
+  </body>
+</html>

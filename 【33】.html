@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      下面代码的输出是什么?
+    </h1>
+    <p>
+      使用两者，我们可以传递我们想要this关键字引用的对象。 但是，.call方法会立即执行！
+    </p>
+    <p>
+      .bind方法会返回函数的拷贝值，但带有绑定的上下文！ 它不会立即执行。
+    </p>
+    <p>
+      <li>call会立即执行</li>
+      <li>bind不会立即执行，需要再加个()才会执行</li>
+    </p>
+  </body>
+  <script type="text/javascript">
+    const person = {
+      name: "Lydia"
+    };
+
+    function sayHi(age) {
+      console.log(`${this.name} is ${age}`);
+    }
+
+    sayHi.call(person, 21);
+    sayHi.bind(person, 21);
+  </script>
+</html>

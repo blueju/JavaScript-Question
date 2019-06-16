@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Dep() {
+      // 订阅者数组
+      this.subs = []
+    }
+    Dep.prototype = {
+      add: function (newValue) {
+        this.subs.push(newValue)
+      },
+      notify: function () {
+
+      }
+    }
+
+    function observe(targetObject) {
+      if (!targetObject || typeof targetObject !== 'object') {
+        return
+      }
+      Object.keys(targetObject).forEach((key) => {
+        observe(targetObject[key])
+        let dep = new Dep()
+        Object.defineProperty(targetObject, key, {
+          enumerable: true, // 可枚举
+          configurable: false, // 不能再define
+          get: function () {
+            // 这里要添加订阅者
+            // dep.add()
+            // return targetObject[key]
+          },
+          set: function (value) {
+            // targetObject[key] = value
+            // 这里要通知订阅者
+            // dep.notify()
+          }
+        })
+      })
+    }
+    let obj = {
+      title: 'title'
+    }
+    observe(obj)
+  </script>
+</body>
+
+</html>

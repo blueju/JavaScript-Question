@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      下面代码输出什么？
+    </h1>
+    <p>
+      所有对象键（不包括Symbols）都会被存储为字符串，即使你没有给定字符串类型的键。
+      这就是为什么Object.hasOwnProperty('1')也返回true。
+    </p>
+    <p>
+      上面的说法不使用于Set。
+      在我们的Set中没有"1"，所以set.has("1")返回的是false。
+      它有数字类型1，所以set.has(1)返回的是true。
+    </p>
+  </body>
+  <script type="text/javascript">
+    const obj = {
+      1: 'a',
+      2: 'b',
+      3: 'c',
+      4: 'd',
+    }
+
+    const set = new Set([1, 2, 3, 4, 5])
+
+    console.log(obj.hasOwnProperty('1'));
+    console.log(obj.hasOwnProperty(1));
+    console.log(set.has('1'));
+    console.log(set.has(1));
+  </script>
+</html>

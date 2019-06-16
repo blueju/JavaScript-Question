@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+  <script type="text/javascript">
+    var obj = {}
+    Object.defineProperty(obj, 'txt', {
+      get: function() {
+        return obj
+      },
+
+      set: function(newValue) {
+        console.log('出发了')
+        document.getElementById('txt').value = newValue
+        document.getElementById('show-txt').innerHTML = newValue
+      }
+    })
+
+    document.addEventListener('keyup', function(e) {
+      obj.txt = e.target.value
+    })
+  </script>
+  <body>
+    <div id="app">
+      <input type="text" id="txt">
+      <p id="show-txt"></p>
+    </div>
+  </body>
+</html>

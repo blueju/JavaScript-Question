@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>下面代码的输出是什么？</h1>
+    <p>
+      使用new关键字，它指向的是我们创建的新空对象。但是，如果你不添加new，它指的是全局对象。
+    </p>
+  </body>
+  <script type="text/javascript">
+    function Person(firstName, lastName) {
+      this.firstName = firstName,
+        this.lastName = lastName
+    }
+
+    const one = new Person('A', 'B')
+    const two = Person('A', 'B')
+
+    console.log(one);
+    console.log(two);
+  </script>
+</html>
